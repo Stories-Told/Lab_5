@@ -5,32 +5,31 @@
 using namespace std;
 
 // Global variables
-// x = mean
-// s = standard deviation
 // x1-x5 = user input numbers
-double x, s, x1, x2, x3, x4, x5;
+double mean, standardDeviation, x1, x2, x3, x4, x5;
 
 // Calculate the mean giving user input
 double Calculate_Mean(double x1, double x2, double x3, double x4, double x5)
 {
-    x = (x1 + x2+ x3+ x4+ x5) / 5;
+    mean = (x1 + x2+ x3+ x4+ x5) / 5;
 
-    return x;
+    return mean;
 }
 
 // Calculate the Standard Deviation giving user input
 double Calculate_Standard_Deviation(double x1, double x2, double x3, double x4, double x5)
 {
-    s = (pow((x1 - x), 2.0) + pow((x2 - x), 2.0) + pow((x3 - x), 2.0) +
-        pow((x4 - x), 2.0) + pow((x5 - x), 2.0)) / 5;
+    standardDeviation = (pow((x1 - mean), 2.0) + pow((x2 - mean), 2.0) + pow((x3 - mean), 2.0) +
+                         pow((x4 - mean), 2.0) + pow((x5 - mean), 2.0)) / 5;
 
-    sqrt(s);
+    standardDeviation = sqrt(standardDeviation);
 
-    return s;
+    return standardDeviation;
 }
 
 int main()
 {
+    // Tell the user what this program is
     cout << "--------------------------------------\n";
     cout << "Mean and Standard Deviation Calculator\n";
     cout << "--------------------------------------\n\n";
@@ -58,10 +57,10 @@ int main()
     cin >> x5;
     cout << endl;
 
-    // Output the Calculations
+    // Output the Calculations for mean and SD
     cout << "------------------------------------------\n";
     cout << "Mean: " << Calculate_Mean(x1, x2, x3, x4, x5) << endl;
-    cout << "Standard Deviation: " << Calculate_Standard_Deviation(x1, x2, x3, x4,x5) << endl;
+    cout << "Standard Deviation: " << fixed << setprecision(3) << Calculate_Standard_Deviation(x1, x2, x3, x4,x5) << endl;
     cout << "-------------------------------------------\n";
 
 
