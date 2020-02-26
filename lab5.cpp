@@ -4,31 +4,15 @@
 
 using namespace std;
 
-// Global variables
-// x1-x5 = user input numbers
-double mean, standardDeviation, x1, x2, x3, x4, x5;
-
-// Calculate the mean giving user input
-double Calculate_Mean(double x1, double x2, double x3, double x4, double x5)
-{
-    mean = (x1 + x2+ x3+ x4+ x5) / 5;
-
-    return mean;
-}
-
-// Calculate the Standard Deviation giving user input
-double Calculate_Standard_Deviation(double x1, double x2, double x3, double x4, double x5)
-{
-    standardDeviation = (pow((x1 - mean), 2.0) + pow((x2 - mean), 2.0) + pow((x3 - mean), 2.0) +
-                         pow((x4 - mean), 2.0) + pow((x5 - mean), 2.0)) / 5;
-
-    standardDeviation = sqrt(standardDeviation);
-
-    return standardDeviation;
-}
+// Forward declarations to calculate mean and SD
+double Calculate_Mean(double x1, double x2, double x3, double x4, double x5);
+double Calculate_Standard_Deviation(double x1, double x2, double x3, double x4, double x5);
 
 int main()
 {
+    // Variables for user input and to calculate mean and SD
+    double x1, x2, x3, x4, x5, mean, standardDeviation;
+
     // Tell the user what this program is
     cout << "--------------------------------------\n";
     cout << "Mean and Standard Deviation Calculator\n";
@@ -65,4 +49,29 @@ int main()
 
 
     return 0;
+}
+
+// Calculate the mean giving user input
+double Calculate_Mean(double x1, double x2, double x3, double x4, double x5)
+{
+    // Calculates mean
+    double mean = (x1 + x2+ x3+ x4+ x5) / 5;
+
+    return mean;
+}
+
+// Calculate the Standard Deviation giving user input
+double Calculate_Standard_Deviation(double x1, double x2, double x3, double x4, double x5)
+{
+    // Calculate mean using the function
+    double mean = Calculate_Mean(x1, x2, x3, x4, x5);
+
+    // Calculate SD
+    double standardDeviation = (pow((x1 - mean), 2.0) + pow((x2 - mean), 2.0) + pow((x3 - mean), 2.0) +
+                                pow((x4 - mean), 2.0) + pow((x5 - mean), 2.0)) / 5;
+
+    // Square root SD
+    standardDeviation = sqrt(standardDeviation);
+
+    return standardDeviation;
 }
